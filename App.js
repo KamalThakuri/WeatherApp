@@ -1,9 +1,10 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, StatusBar} from 'react-native';
 import React from 'react';
 import HomeScreen from './src/HomeScreen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
 import WeekelyForecast from './src/WeekelyForecast';
+import SplashScreen from './src/components/views/SplashScreen';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -19,7 +20,12 @@ export default function App() {
           headerTintColor: '#fff',
         }}>
         <Stack.Screen
-          name="Home"
+          name="SplashScreen"
+          component={SplashScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="HomeScreen"
           component={HomeScreen}
           options={{headerShown: false}}
         />
@@ -31,6 +37,7 @@ export default function App() {
           }}
         />
       </Stack.Navigator>
+      <StatusBar translucent backgroundColor={'transparent'} height={'20'} />
     </NavigationContainer>
   );
 }

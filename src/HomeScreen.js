@@ -6,6 +6,7 @@ import {
   Text,
   TextInput,
   View,
+  ActivityIndicator,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import TodayCard from './components/TodayCard';
@@ -139,9 +140,10 @@ export default function HomeScreen({navigation}) {
   };
 
   return (
-    <View style={{flex: 1, backgroundColor: '#1f193b'}}>
+    <View style={{flex: 1, backgroundColor: '#1f193b', paddingVertical: 44}}>
       {loading ? (
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <ActivityIndicator />
           <Text style={{color: '#ccc'}}>Loading</Text>
         </View>
       ) : (
@@ -160,12 +162,13 @@ export default function HomeScreen({navigation}) {
               onChangeText={value => setEnteredLocation(value)}
             />
             <Pressable
+              style={{padding: 10}}
               onPress={() => {
                 onLocationHandler(enteredLocation);
               }}>
               <Image
                 style={{width: 32, height: 32, tintColor: '#fff'}}
-                source={require('./assets/location.png')}
+                source={require('./assets/search-icon.png')}
               />
             </Pressable>
           </View>
